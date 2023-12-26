@@ -1,0 +1,86 @@
+esphome:
+  name: masina-spalat
+
+bk72xx:
+  board: generic-bk7231n-qfn32-tuya
+
+logger:
+
+web_server:
+
+captive_portal:
+
+mdns:
+
+api:
+
+ota:
+
+wifi:
+  ssid: !secret wifi_smart
+  password: !secret wifi_smart_pass
+  ap:
+    ssid: "Masina Spalat AP"
+    password: "maya2021"
+
+substitutions:
+  voltage_divider: "778"
+  current_resistor: "0.001008755324183625"
+  current_multiply: "0.3100151976971161"
+
+sensor:
+  - platform: uptime
+    name: Uptime
+  - platform: hlw8012
+    model: BL0937
+    cf_pin:
+      number: P7
+      inverted: true
+    cf1_pin:
+      number: P6
+      inverted: true
+    sel_pin:
+      number: P24
+      inverted: true
+    current:
+      name: Masina De Spalat Current
+      filters:
+        - multiply: ${current_multiply}
+    voltage:
+      name: Masina De Spalat Voltage
+    power:
+      name: Masina De Spalat Power
+    energy:
+      name: Masina De Spalat Energy
+    voltage_divider: ${voltage_divider}
+    current_resistor: ${current_resistor}
+    update_interval: 2s
+
+text_sensor:
+  - platform: libretiny
+    version:
+      name: LibreTiny Version
+
+binary_sensor:
+  - platform: gpio
+    id: binary_switch_1
+    pin:
+      number: P10
+      inverted: true
+      mode: INPUT_PULLUP
+    on_press:
+      then:
+        - switch.toggle: switch_1
+
+switch:
+  - platform: gpio
+    id: switch_1
+    name: Masina De Spalat
+    pin: P26
+    restore_mode:
+      RESTORE_DEFAULT_ON
+
+status_led:
+  pin:
+    number: P8
+    inverted: true
