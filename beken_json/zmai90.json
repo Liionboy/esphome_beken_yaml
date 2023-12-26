@@ -1,0 +1,24 @@
+{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "Full Device Name Here",
+  "model": "enter short model name here",
+  "chip": "BK7231N",
+  "board": "TODO",
+  "flags": "0",
+  "keywords": [
+    "TODO",
+    "TODO",
+    "TODO"
+  ],
+  "pins": {
+    "6": "WifiLED_n;0",
+    "7": "Btn;0",
+    "14": "BridgeREV;0",
+    "16": "BridgeFWD;0",
+    "26": "LED_n;0"
+  },
+  "command": "backlog startDriver Bridge; startDriver RN8209; PowerSave 1; startDriver NTP; ntp_setServer 93.190.144.3; ntp_timeZoneOfs +2; SetupEnergyStats 1 60 60;",
+  "image": "https://obrazki.elektroda.pl/YOUR_IMAGE.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic_YOUR_TOPIC.html"
+}
