@@ -1,4 +1,4 @@
-DEDEMAN SMARt SOCKET:
+DEDEMAN SMART SOCKET:
 
 ![image](https://github.com/Liionboy/esphome_beken_yaml/assets/87735636/a6efe344-96ea-447d-91bc-950aec75fb70)
 
